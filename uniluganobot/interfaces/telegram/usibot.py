@@ -35,6 +35,8 @@ class UsiBot(telepot.aio.helper.ChatHandler):
     def handle_command(self, command, *args):
         return Command.execute_command(command, *args)
 
+    def on_close()
+
     @staticmethod
     def log(message):
         fields = [
@@ -44,7 +46,7 @@ class UsiBot(telepot.aio.helper.ChatHandler):
             message['chat']['username'],
             message['text']
         ]
-        print(','.join(fields))
+        print('"{}","{}","{}","{}","{}"'.format(*fields))
 
     @classmethod
     def run(cls):
