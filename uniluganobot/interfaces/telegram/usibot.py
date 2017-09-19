@@ -35,7 +35,9 @@ class UsiBot(telepot.aio.helper.ChatHandler):
     def handle_command(self, command, *args):
         return Command.execute_command(command, *args)
 
-    def on_close()
+    @classmethod
+    def on_close(cls):
+        pass
 
     @staticmethod
     def log(message):
