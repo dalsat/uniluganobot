@@ -23,7 +23,8 @@ class UsiBot(telepot.aio.helper.ChatHandler):
         content_type, chat_type, chat_id = telepot.glance(msg)
 
         if content_type != 'text':
-            await self.sender.sendMessage("Nope, I don't do that kind of stuff...")
+            response = "Nope, I don't do that kind of stuff..."
+            await self.sender.sendMessage(response)
             return
 
         self.log(msg)

@@ -10,7 +10,8 @@ class MensaCommand(AbstractCommand):
 
     command = '/mensa'
     _datasource = MensaSource()
-    days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica']
+    days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì',
+            'Venerdì', 'Sabato', 'Domenica']
     lower_days = [day.lower() for day in days]
 
     @classmethod
