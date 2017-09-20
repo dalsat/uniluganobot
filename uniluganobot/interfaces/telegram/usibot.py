@@ -12,9 +12,6 @@ class UsiBot(telepot.aio.helper.ChatHandler):
 
     timeout = 10
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-
     def data_from(self, datasource: str) -> dict:
         if datasource in self.commands:
             return self.commands[datasource].data()

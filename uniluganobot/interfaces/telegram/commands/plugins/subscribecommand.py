@@ -2,10 +2,8 @@ from .. import Command
 from ..abstractcommand import AbstractCommand
 
 
-@Command.register
+@Command('/subscribe')
 class SubscribeCommand(AbstractCommand):
-
-    command = '/subscribe'
 
     @classmethod
     def handle_command(cls, *args) -> str:

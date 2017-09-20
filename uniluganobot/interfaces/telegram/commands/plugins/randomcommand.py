@@ -4,10 +4,8 @@ from ..abstractcommand import AbstractCommand
 import random
 
 
-@Command.register
+@Command('/random')
 class RandomCommand(AbstractCommand):
-
-    command = '/random'
 
     @staticmethod
     def handle_command(min=0, max=255, *args):

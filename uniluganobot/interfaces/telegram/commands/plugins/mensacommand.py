@@ -5,10 +5,9 @@ from datasources.mensa import MensaSource
 import datetime
 
 
-@Command.register
+@Command('/mensa')
 class MensaCommand(AbstractCommand):
 
-    command = '/mensa'
     _datasource = MensaSource()
     days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì',
             'Venerdì', 'Sabato', 'Domenica']

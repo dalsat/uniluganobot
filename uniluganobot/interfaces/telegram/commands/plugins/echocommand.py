@@ -2,10 +2,8 @@ from .. import Command
 from ..abstractcommand import AbstractCommand
 
 
-@Command.register
+@Command('/echo')
 class EchoCommand(AbstractCommand):
-
-    command = '/echo'
 
     @staticmethod
     def handle_command(*args):
