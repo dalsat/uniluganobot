@@ -1,21 +1,19 @@
 from .. import Command
-from ..abstractcommand import AbstractCommand
 from datasources.mensa import MensaSource
 
 import datetime
 
 
 @Command('/mensa')
-class MensaCommand(AbstractCommand):
+class MensaCommand:
 
     _datasource = MensaSource()
     days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì',
             'Venerdì', 'Sabato', 'Domenica']
     lower_days = [day.lower() for day in days]
 
-    @classmethod
-    def handle_command(cls, *args):
-        return cls.format(cls.data())
+    def __call__(self, *args):
+        return self.format(self.data())
 
     @classmethod
     def format(cls, data):
@@ -25,7 +23,17 @@ class MensaCommand(AbstractCommand):
             lines.append(value)
             lines.append('')
 
-        return '\n'.join(lines)
+        lines.append('')
+        text = '\n'.join(lines)
+
+        text += cls.translate_url(text)
+
+        return text
+
+    @staticmethod
+    def translate_url(text, target_lang='en'):
+        template_url = '[translate](https://translate.google.com/#it/{}/{})'
+        return template_url.format(target_lang, text)
 
     @classmethod
     def data(cls):

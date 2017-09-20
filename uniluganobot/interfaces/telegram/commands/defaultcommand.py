@@ -1,10 +1,9 @@
 import random
-from .abstractcommand import AbstractCommand
 
 
-class DefaultCommand(AbstractCommand):
+class DefaultCommand:
 
-    command = 'default'
+    _command = 'default'
 
     answers = [
         "I don't understand",
@@ -15,6 +14,5 @@ class DefaultCommand(AbstractCommand):
         "I'm sorry, it's not you, it's me"
     ]
 
-    @classmethod
-    def handle_command(cls, *args):
-        return random.choice(cls.answers)
+    def __call__(self, *args):
+        return random.choice(self.answers)

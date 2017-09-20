@@ -12,6 +12,10 @@ class UsiBot(telepot.aio.helper.ChatHandler):
 
     timeout = 10
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.session = {}
+
     def data_from(self, datasource: str) -> dict:
         if datasource in self.commands:
             return self.commands[datasource].data()
@@ -31,7 +35,7 @@ class UsiBot(telepot.aio.helper.ChatHandler):
         await self.sender.sendMessage(response, parse_mode='Markdown')
 
     def handle_command(self, command, *args):
-        return Command.execute_command(command, *args)
+        return Command.execute(command, *args, session=self.session)
 
     @classmethod
     def on_close(cls, event):
