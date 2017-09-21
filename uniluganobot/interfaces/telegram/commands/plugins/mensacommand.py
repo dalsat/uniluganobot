@@ -1,7 +1,8 @@
+import datetime
+import urllib.parse
+
 from .. import Command
 from datasources.mensa import MensaSource
-
-import datetime
 
 
 @Command('/mensa')
@@ -33,7 +34,7 @@ class MensaCommand:
     @staticmethod
     def translate_url(text, target_lang='en'):
         template_url = '[translate](https://translate.google.com/#it/{}/{})'
-        return template_url.format(target_lang, text)
+        return template_url.format(target_lang, urllib.parse.quote(text))
 
     @classmethod
     def data(cls):
