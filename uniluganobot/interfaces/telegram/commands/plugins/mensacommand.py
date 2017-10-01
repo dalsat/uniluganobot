@@ -43,8 +43,7 @@ class MensaCommand:
     @classmethod
     def data(cls):
         menu = cls._datasource.data()
-        # weekday = datetime.date.today().weekday()
-        weekday = 6
+        weekday = datetime.date.today().weekday()
 
         out = menu[cls.days[weekday]]
         return out
