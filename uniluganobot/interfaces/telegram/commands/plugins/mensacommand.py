@@ -7,6 +7,7 @@ from datasources.mensa import MensaSource
 
 @Command('/mensa')
 class MensaCommand:
+    'Returns the daily menu for the mensa in Lugano.'
 
     _datasource = MensaSource()
     days = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì',
@@ -41,5 +42,5 @@ class MensaCommand:
         menu = cls._datasource.data()
         weekday = datetime.date.today().weekday()
 
-        out = menu[cls.days[weekday]]
+        out = menu.get(cls.days[weekday], 'Mensa appears to bo closed today.')
         return out
