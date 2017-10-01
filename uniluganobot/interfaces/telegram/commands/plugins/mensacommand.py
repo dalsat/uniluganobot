@@ -15,7 +15,10 @@ class MensaCommand:
     lower_days = [day.lower() for day in days]
 
     def __call__(self, *args):
-        return self.format(self.data())
+        try:
+            return self.format(self.data())
+        except KeyError:
+            return 'Mensa appears to bo closed today.'
 
     @classmethod
     def format(cls, data):
@@ -40,7 +43,8 @@ class MensaCommand:
     @classmethod
     def data(cls):
         menu = cls._datasource.data()
-        weekday = datetime.date.today().weekday()
+        # weekday = datetime.date.today().weekday()
+        weekday = 6
 
-        out = menu.get(cls.days[weekday], 'Mensa appears to bo closed today.')
+        out = menu[cls.days[weekday]]
         return out
